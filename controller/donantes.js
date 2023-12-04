@@ -9,7 +9,7 @@ const getDonante = async (req, res) => {
   });
 };
 const postDonante = async (req, res) => {
-  const datos = req.query; //capturar datos de la url de postman
+  const datos = req.body; //capturar datos de la url de postman
   let mensaje = "Insercion exitosa";
   try {
     const usuarios = new donante(datos); //instaciar el objeto
@@ -35,7 +35,7 @@ const putDonante = async (req, res) => {
     documento_Identidad,
     fecha_Registro,
     entidad_Asociada
-  } = req.query; //desestructurar
+  } = req.body; //desestructurar
   try {
     const donante1 = await donante.findOneAndUpdate(
       { id_Donante: id_Donante },
@@ -59,7 +59,7 @@ const putDonante = async (req, res) => {
   });
 };
 const deleteDonante = async (req, res) => {
-  const { id_Donante } = req.query;
+  const { id_Donante } = req.body;
   let mensaje = "Eliminación exitosa";
   try {
     const donante1 = await donante.findOneAndDelete({ id_Donante: id_Donante });

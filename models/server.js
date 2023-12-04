@@ -1,4 +1,6 @@
 const express = require("express");
+const cors = require("cors");
+const bodyParser = require("body-parser");
 const { dbConection } = require("../database/config");
 
 class Server {
@@ -6,6 +8,7 @@ class Server {
     this.app = express();
     this.port = process.env.PORT;
     this.donantesPath = "/donantes";
+    this.middlewares();
     this.routes();
     this.conectarDB();
   }
@@ -18,6 +21,11 @@ class Server {
 
   routes() {
     this.app.use(this.donantesPath, require("../routes/donantes"));
+  }
+
+  middlewares() {
+    this.app.use(cors()); //Indicar el uso de cors
+    this.app.use(bodyParser.json()); //Parsear objetos a insertar en la db
   }
 
   async conectarDB() {
