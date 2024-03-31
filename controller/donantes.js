@@ -59,7 +59,7 @@ const putDonante = async (req, res) => {
   });
 };
 const deleteDonante = async (req, res) => {
-  const { id_Donante } = req.body;
+  const { id_Donante } = req.params;
   let mensaje = "Eliminación exitosa";
   try {
     const donante1 = await donante.findOneAndDelete({ id_Donante: id_Donante });

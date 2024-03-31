@@ -32,7 +32,7 @@ const DonantesSchema = {
   },
   fecha_Registro: {
     type: String,
-    required: [true, "La fecha de registro es requerida"],
+    required: false,
   },
   entidad_Asociada: {
     type: String,
